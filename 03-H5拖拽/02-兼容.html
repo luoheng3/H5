@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            #box{
+                position: absolute;
+                left:0;
+                top:0;
+                width: 100px;
+                height: 100px;
+                background-color: red;
+            }
+            pre{
+                margin-top:40px;
+                color:red;
+                font-size:18px;
+                font-family:"微软雅黑";
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box" draggable="true">
+            H5的拖拽
+        </div>
+        <pre>
+            // H5的拖拽
+            box.ondragend = box.ondrag = function (e) {
+                e = e || event;
+                this.style.cssText = `left:${e.clientX}px;top:${e.clientY}px;`;
+            };
+        </pre>
+        <pre>
+            // 火狐的兼容
+            box.ondrag = function (e) {
+                console.log(e.dataTransfer);
+                e.dataTransfer.setData("key","index");
+                e.dataTransfer.setDragImage(oImage,X,Y);
+            }
+        </pre>
+        <script>
+            // H5的拖拽
+            box.ondragend = box.ondrag = function (e) {
+                e = e || event;
+                this.style.cssText = `left:${e.clientX}px;top:${e.clientY}px;`;
+            };
+            // 火狐的兼容
+            box.ondrag = function (e) {
+                console.log(e.dataTransfer);
+                e.dataTransfer.setData("key","index");
+                e.dataTransfer.setDragImage(oImage,X,Y);
+            }
+        </script>
+    </body>
+</html>
+</html>

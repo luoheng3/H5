@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            pre{
+                margin-top:40px;
+                color:red;
+                font-size:18px;
+                font-family:"微软雅黑";
+            }
+            #box{
+                width: 600px;
+                height: 100px;
+                background-color:rgba(0,0,0,.1);
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box">
+
+        </div>
+
+        <script>
+            // 文件对象基础操作
+            box.ondragover = function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            };
+            box.ondrop = function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log(e.dataTransfer.files);
+                //  图片的名字
+                console.log(e.dataTransfer.files[0].name);
+                //  图片的大小
+                console.log(e.dataTransfer.files[0].size);
+                //  图片的类型 toLocalString
+                console.log(e.dataTransfer.files[0].type);
+                // 将选中的文件信息保存
+                let oFile = e.dataTransfer.files[0];
+                // 创建文件读取对象
+                let file = new FileReader();
+                // 分析文件
+                file.readAsDataURL(oFile);
+                // 分析完成执行
+                file.onload = function () {
+                    // 返回的结果就是图片的base64地址
+                    console.log(this.result);
+                    let oImg = new Image();
+                    oImg.src = this.result;
+                    oImg.width = 150;
+                    oImg.height = 250;
+                    document.body.appendChild(oImg);
+                }
+            };
+
+
+        </script>
+    </body>
+</html>
+</html>

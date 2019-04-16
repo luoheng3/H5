@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #cvs{
+            border:1px solid red;
+        }
+    </style>
+</head>
+    <body>
+        <canvas id="cvs" width="500" height="500"></canvas>
+        <script>
+            let oC = document.querySelector("#cvs");
+            let ctx = oC.getContext("2d");
+            // 改变原坐标的位置
+            ctx.translate(250,250);
+            ctx.strokeStyle = "red";
+            ctx.strokeRect(-150,0,100,30);
+            ctx.beginPath();
+            ctx.strokeRect(0,0,100,30);
+            // 旋转 默认以左上角为旋转中心店
+            ctx.rotate(45*Math.PI/180);
+            ctx.strokeRect(0,0,100,30);
+
+
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            position: absolute;
+            top:0;
+            left:0;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+    <body>
+        <div id="box" draggable="true"></div>
+    <script>
+        let L = 0;
+        let T = 0;
+        box.ondrag = function (e) {
+            e = e || window.event;
+            e.cancelBubble = true;
+            e.preventDefault();
+
+        };
+        box.ondragend =function (e) {
+            e = e || window.event;
+            e.cancelBubble = true;
+            e.preventDefault();
+            let X = e.clientX;
+            let Y = e.clientY;
+            let left = box.offsetLeft;
+            let top = box.offsetTop;
+            box.style.top = top + Y - T + "px";
+            box.style.left = left + X - L + "px";
+            T = top;
+            L = left;
+        }
+    </script>
+    </body>
+</html>

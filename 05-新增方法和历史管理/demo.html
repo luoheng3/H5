@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div id="box" data-a="罗恒" data-a-b="爱" data-a-b-c="范雨菲"></div>
+<script>
+    box.classList.add("wrap","div");
+    box.classList.remove("wrap","div");
+    box.classList.toggle("set");
+    console.log(box.classList.contains("set"));
+    console.log(box.dataset.a + box.dataset.aB + box.dataset.aBC);
+    var json = {
+        name:"罗恒"
+    };
+    var str = JSON.stringify(json);
+    console.log(str);
+    var obj = JSON.parse(str);
+    console.log(JSON);
+    var str1 = encodeURI(str); // 编码
+    console.log(str1);
+    var str2 = decodeURI(str1);
+    console.log(str2);
+    var n = "jacy罗恒";
+    // btoa 不能编码中文
+    var n1 = window.btoa(encodeURI(n));
+    console.log(decodeURI(window.atob(n1)));
+</script>
+</body>
+</html>

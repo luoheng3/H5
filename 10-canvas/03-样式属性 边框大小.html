@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #cvs{
+            margin:auto;
+            border:1px solid black;
+        }
+    </style>
+</head>
+    <body>
+        <canvas id="cvs" width="500" height="500"></canvas>
+        <script>
+            let oC = document.getElementById("cvs");
+            let ctx = oC.getContext("2d");
+            // 实心矩形 颜色
+            ctx.fillStyle = "red";
+
+            ctx.fillRect(100,100,100,100);
+            // 空心矩形 颜色
+            ctx.strokeStyle = "#f60";
+            // 线条宽度
+            ctx.lineWidth = 5; //2px
+            ctx.strokeRect(200,200,100,100);
+        </script>
+    </body>
+</html>

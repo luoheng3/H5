@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    </style>
+</head>
+<body>
+
+<script>
+
+     box.ondragover = function (e) {
+     e = e || window.event;
+     e.stopPropagation();
+     e.preventDefault();
+     };
+     box.ondrop = function (e) {
+     e = e || window.event;
+     e.stopPropagation();
+     e.preventDefault();
+     var datas = e.dataTransfer.files[0];
+     let file = new FileReader();
+     file.readAsDataURL(datas);
+     file.onload = function () {
+     let img = new Image();
+     img.src = this.result;
+     img.style.marginTop = "400px";
+     img.width = 100;
+     document.body.appendChild(img);
+     }
+     }
+
+</script>
+</body>
+</html>

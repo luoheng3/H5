@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #cvs{
+            display: block;
+            border:1px solid red;
+            margin:auto;
+        }
+    </style>
+</head>
+    <body>
+        <canvas id="cvs" width="500" height="500"></canvas>
+        <script>
+            let oC = document.getElementById("cvs");
+            let ctx = oC.getContext("2d");
+            // 在canvas上面绘制任意图形  都叫路径
+            // 绘制线条 坐标从一个点绘制到另一个点 moveTO
+            ctx.moveTo(100,100);
+            // 结束点
+            ctx.lineTo(200,200);
+            ctx.strokeStyle = "red";
+            ctx.stroke();
+        </script>
+    </body>
+</html>

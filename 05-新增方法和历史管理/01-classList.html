@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    </style>
+</head>
+<body>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<script>
+    var aBox = document.getElementsByClassName("box");
+    // add("string")  增加类名
+   aBox[0].classList.add("div");
+    // toggle("有就删除没有就加")  取反
+    aBox[1].classList.toggle("div");
+    // remove() 删除
+    aBox[2].classList.remove("box");
+    // contain() 是否包含
+    console.log(aBox[1].classList.contains("div"));
+</script>
+</body>
+</html>

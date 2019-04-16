@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style>
+           #left{
+               position: absolute;
+               top:0;
+               left:0;
+               width: 100px;
+               height: 300px;
+               background-color: #f60;
+           }
+            #right{
+                position: absolute;
+                top:0;
+                right:0;
+                width: 60px;
+                height: 50px;
+                background-color: yellow;
+            }
+        </style>
+    </head>
+    <body>
+       <div id="left"></div>
+       <div id="right"></div>
+        <script>
+            // 要想拖拽首先要设置 draggable="true"
+            let n = 0;
+            // 拖拽元素的事件
+            // 当拖拽开始的时候触发
+            right.ondragstart = function () {
+                this.style.background = "red";
+            }
+            // 连续拖拽  持续触发
+            right.ondrag = function () {
+                this.innerHTML = n++;
+            }
+            right.ondragend = function () {
+                this.innerHTML = "拖拽结束";
+            }
+            // 目标元素的事件
+            // 当拖拽元素进入目标元素的时候触发
+            left.ondragenter = function () {
+                this.innerHTML = "拖拽元素已进入";
+            }
+            left.ondragover = function (e) {
+                e = e || window.event;
+                e.preventDefault();
+                e.stopPropagation();
+                this.innerHTML = n++;
+            }
+            // 当拖拽元素离开目标元素时候触发
+            left.ondragleave = function () {
+                this.innerHTML = "我走了";
+            }
+            // 当拖拽元素在目标元素上释放鼠标触发
+            left.ondrop = function (e) {
+                e = e || window.event;
+                e.preventDefault();
+                e.stopPropagation();
+                right.parentNode.removeChild(right);
+            }
+        </script>
+    </body>
+</html>

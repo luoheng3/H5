@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    </style>
+</head>
+    <body>
+        <div id="box" data-a="罗恒" data-a-b="范雨菲" data-a-b-c="爱"></div>
+        <script>
+            console.log(box.dataset);
+            console.log(box.dataset.a);
+            // 从第一个名字之后都要驼峰命名
+            console.log(box.dataset.aBC);
+            console.log(box.dataset.aB);
+        </script>
+    </body>
+</html>

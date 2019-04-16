@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            width: 600px;
+            height: 200px;
+            background: rgba(0,0,0,.5);
+        }
+    </style>
+</head>
+<body>
+
+<img width="200" height="auto" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3316419459,29192861&fm=27&gp=0.jpg" alt="">
+我可以和你
+<div id="box" draggable="true"></div>
+<script>
+    box.ondragover = function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    };
+    box.ondrop = function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        let data = e.dataTransfer;
+        let f = data.files[0];
+        let url = window.URL.createObjectURL(f) || window.webkitURL.createObjectURL(f);
+        this.innerHTML = `<img src="${url}"/>`
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            position: absolute;
+            top:0;
+            left:0;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        #box1{
+            position: absolute;
+            top:100px;
+            left:200px;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+    <body>
+        <div id="box"></div>
+        <div id="box1" draggable="true"></div>
+        <script>
+            // 原生JS拖拽三事件 按下移动 抬起
+            box.onmousedown = function (e) {
+                e = e || window.event;
+                var x = e.clientX;
+                var y = e.clientY;
+                var left = box.offsetLeft;
+                var top = box.offsetTop;
+                document.onmousemove = function (e) {
+                    e = e || window.event;
+                    // 优化 cssText
+                    box.style.cssText = `left:${e.clientX - x + left}px;top:${e.clientY - y + top}px`;
+                    //box.style.top = e.clientY - y + top + "px";
+                    //box.style.left = e.clientX - x + left + "px";
+                };
+                document.onmouseup = function () {
+                    this.onmouseup = this.onmousemove = null;
+                }
+            }
+            // H5的拖拽
+            let j ,k ,i,Left,Right;
+            box1.ondragstart = function (e) {
+                e = e || window.event;
+                j = e.clientX - box1.offsetLeft;
+                i = e.clientY - box1.offsetTop;
+            };
+            box1.ondragend = function (e) {
+                e = e || window.event;
+                box1.style.cssText = `left:${e.clientX - j}px;top:${e.clientY - i}px;`;
+            }
+        </script>
+    </body>
+</html>

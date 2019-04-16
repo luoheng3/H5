@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #cvs{
+            display: block;
+            border:1px solid red;
+            margin:auto;
+        }
+    </style>
+</head>
+<body>
+<canvas id="cvs" width="500" height="500"></canvas>
+<script>
+    let oC = document.getElementById("cvs");
+    let ctx = oC.getContext("2d");
+
+
+    ctx.moveTo(100,100);
+    ctx.lineTo(200,200);
+    ctx.strokeStyle = "red";
+    //ctx.moveTo(300,300); // 这行代码如果不写就会默认上一次结束点为起点
+    ctx.lineTo(400,400);
+    ctx.stroke();
+    // 解决办法
+    // 在写任何路径前  最好在路径前面加上 beginPath;
+    ctx.beginPath();
+    // 默认有继承性 下面路径会就继承上面路径的属性
+    ctx.strokeStyle = "green";
+    ctx.moveTo(0,400);
+    ctx.lineTo(300,300);
+    ctx.lineTo(500,100);
+    // 可以将起始点结束点连在一起 方便; 可写可不写;
+    ctx.closePath();
+    ctx.stroke();
+</script>
+</body>
+</html>

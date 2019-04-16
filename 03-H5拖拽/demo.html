@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            position: absolute;
+            top:0;
+            left:0;
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+        #box1{
+            position: absolute;
+            top:0;
+            right:0;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+    </style>
+</head>
+    <body>
+        <div id="box" draggable="true"></div>
+        <div id="box1" draggable="true"></div>
+        <script>
+            // 拖拽
+            // 原生JS拖拽
+//            box.onmousedown = function (e) {
+//                e = e || window.event;
+//                let left = e.clientX-this.offsetLeft,
+//                    top = e.clientY-this.offsetTop;
+//                document.onmousemove = function (e) {
+//                    e = e || window.event;
+//                    box.style.cssText = `left:${e.clientX-left}px;top:${e.clientY-top}px;`
+//                };
+//                document.onmouseup = function () {
+//                    this.onmousemove = this.onmouseup = null;
+//                }
+//            };
+//            // H5的拖拽
+////            box1.ondrag = function (e) {
+////                e = e || window.event;
+////                e.stopPropagation();
+////                e.preventDefault();
+////            };
+//            box1.ondragend = function (e) {
+//                e = e || window.event;
+//                box1.style.cssText = `left:${e.clientX}px;top:${e.clientY}px`;
+//            }
+            // 拖拽七要素
+            // 拖拽元素
+            // 拖拽七要素
+
+            // 拖拽七要素
+            /*
+            box1.ondragstart = function () {
+                this.innerHTML = "现在开始拖拽";
+            };
+            var n = 0;
+            box1.ondrag = function (e) {
+                e = e || window.event;
+                e.preventDefault();
+                e.stopPropagation();
+                this.innerHTML = ++n;
+            };
+            box1.ondragend = function () {
+                this.innerHTML = "拖拽结束";
+            };
+            //目标元素
+            box.ondragenter = function () {
+                this.innerHTML = "鼠标进来了"
+            };
+            box.ondragover = function (e) {
+                e = e || window.event;
+                e.stopPropagation();
+                e.preventDefault();
+                this.innerHTML = ++n;
+            };
+            box.ondragleave = function () {
+                console.log("你就这样走了");
+            };
+            // 在目标上释放鼠标时候触发
+            box.ondrop = function (e) {
+                e = e || window.event;
+                e.stopPropagation();
+                e.preventDefault();
+                this.offsetParent.removeChild(box1);
+            }
+            */
+
+            // 文件对象的基础操作
+            /*
+            box.ondragover = function (e) {
+                e = e || window.event;
+                e.stopPropagation();
+                e.preventDefault();
+            };
+            box.ondrop = function (e) {
+                e = e || window.event;
+                e.stopPropagation();
+                e.preventDefault();
+                var datas = e.dataTransfer.files[0];
+                let file = new FileReader();
+                file.readAsDataURL(datas);
+                file.onload = function () {
+                    let img = new Image();
+                    img.src = this.result;
+                    img.style.marginTop = "400px";
+                    img.width = 100;
+                    document.body.appendChild(img);
+                }
+            }
+            */
+
+        </script>
+    </body>
+</html>

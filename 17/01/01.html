@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background: rgba(0,0,0);
+            margin: 50px auto;
+            color:red;
+            transition: 2s;
+        }
+        /*
+            opacity:0.2
+                不仅颜色透明 而且元素的内容也会透明;
+                如果只想给背景颜色透明 那么就用 rgba();
+            transition 过渡
+                改变元素属性,需要有个时间的过程;
+                transition:要改变的属性 时间 是否需要延迟 过渡曲线(ease ease-in ease-out)贝塞尔曲线
+                transition:background 2s;
+                多个属性 过渡时间一样
+                transition:background,font-size 2s;
+                多个属性 过渡时间不一样
+                transition:background 2s,font-size 2s;
+
+            animation:play 2s
+                animation:play 2s steps(1) 镇动画 就是没有改变的过渡效果
+                animation-play-state: paused; 暂停动画
+                animation-fill-mode: forwards;当动画完成以后保持最后一个属性值
+                animation:name time 是否延迟 运动曲线 动画执行次数infinite 动画执行方向 alternate 来回运动
+        */
+        #box:hover{
+
+        }
+        #wrap{
+            position: absolute;
+            top:0;
+            left:0;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            animation:play 2s 1s 4 alternate;
+        }
+        @keyframes play {
+            0%{left:0}
+            100%{left:400px}
+        }
+        #wrap:hover{
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    111
+</div>
+<div id="wrap">
+
+</div>
+<div id="content">
+
+</div>
+<script>
+    /*
+    * 遍历能不能不要用for循环了
+    *   arr.forEach((item,index) =>{
+    *       以后遍历数组就用这个
+    *   })*/
+    let arr = [2,31,12,3424,121];
+    let arr1 = arr.forEach((item,i) =>{
+        item.onclick = function () {
+            ul.style.left = -i*320 + "px";
+        };
+    });
+    console.log(arr);
+</script>
+</body>
+</html>

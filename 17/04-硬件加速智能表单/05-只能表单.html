@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    </style>
+</head>
+<body>
+<div id="box">
+    <!--
+        required 意思是如果没有填写 就不能提交并且给出提示信息
+        autofocus="true" 表示焦点自动获取到这里
+        pattern="\d{11}"  表示模式匹配
+    -->
+    <form action="https://www.baidu.com">
+        <input type="text" placeholder="请输入你的用户名" required>
+        <input type="email" autofocus="true">
+        <input type="tel" pattern="\d{11}">
+        <input type="range" min="0" max="100" value="0" step="1">
+        <input type="color" id="c">
+        <input type="datetime">
+        <input type="datetime-local">
+        <input type="time">
+        <input type="date">
+        <input type="week">
+        <input type="month">
+        <input type="text" autocomplete="off">
+        <input type="submit" formaction="http://jd.com">
+    </form>
+</div>
+<script>
+
+</script>
+</body>
+</html>

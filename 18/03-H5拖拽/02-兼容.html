@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            *{
+                margin:0;
+                padding:0;
+            }
+            li{
+                list-style: none;
+            }
+            #box{
+                width: 100px;
+                margin:auto;
+            }
+            #box ul li{
+                width: 100px;
+                height: 20px;
+                background-color: green;
+                margin-top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <script>
+            let aLi = document.querySelectorAll("#box ul li");
+            // box.getElementsByTagName("li"); 这样不能使用数组方法
+            aLi.forEach((item,index) =>{
+                // 设置可拖拽属性
+                item.setAttribute("dragable","true");
+                item.ondragstart = function (e) {
+                    console.log(e.dataTransfer);
+                    e.dataTransfer.setData("key",index);
+                    // 当其他地方需要用到index时候,可以获取key对应的index值
+                    e.dataTransfer.getData("key");
+                    /*
+                    * 设置拖拽图片
+                    *   e.dataTransfer.setDragImage(图片对象,x,y)
+                    * */
+                    e.dataTransfer.setDragImage(oImg,0,0)
+                };
+            })
+        </script>
+    </body>
+</html>
+</html>

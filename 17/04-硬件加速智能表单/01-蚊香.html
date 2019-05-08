@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #box{
+            position: relative;
+            top:0;
+            left:0;
+            width: 400px;
+            margin:200px auto;
+            transform-style: preserve-3d;
+            perspective: 800px;
+            transform: rotateX(60deg);
+        }
+        #box div{
+            position: absolute;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            margin:auto;
+            border:15px solid #666;
+            border-radius: 50%;
+        }
+        #box div:nth-child(1){
+             width: 350px;
+             height: 350px;
+             animation: play 3s 2.5s infinite alternate;
+        }
+        #box div:nth-child(2){
+            width: 300px;
+            height: 300px;
+            animation: play 3s 2s infinite alternate;
+        }
+        #box div:nth-child(3){
+            width: 250px;
+            height: 250px;
+            animation: play 3s 1.5s infinite alternate;
+        }
+        #box div:nth-child(4){
+            width: 200px;
+            height: 200px;
+            animation: play 3s 1s infinite alternate;
+        }
+        #box div:nth-child(5){
+            width: 150px;
+            height: 150px;
+            animation: play 3s 0.5s infinite alternate;
+        }
+        #box div:nth-child(6){
+            width: 100px;
+            height: 100px;
+            animation: play 3s infinite alternate;
+        }
+        @keyframes play {
+            0%{
+                transform: translateZ(0);
+            }
+            100%{
+                transform: translateZ(100px);
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+<script>
+
+</script>
+</body>
+</html>

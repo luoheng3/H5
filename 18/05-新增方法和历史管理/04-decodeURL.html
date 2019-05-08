@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    </style>
+</head>
+    <body>
+
+        <script>
+            var str = "新增方法efrg";
+            // 编码 就是让计算机能够认识
+            var s1 = encodeURI(str);
+            console.log(s1); // %E6%96%B0%E5%A2%9E%E6%96%B9%E6%B3%95
+
+            // 解码 就是让人能够认识
+            var s2 = decodeURI(s1);
+            console.log(s2);
+
+        </script>
+    </body>
+</html>

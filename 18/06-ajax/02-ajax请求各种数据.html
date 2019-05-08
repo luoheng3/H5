@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    </style>
+</head>
+<body>
+<div id="box">
+
+</div>
+<a href="./1.txt">点击打开</a>
+<!--
+    1.txt 1.js 这些文件都是直接打开 不能下载
+    想要用户下载 最好就是压缩一下就可以下载了
+-->
+<a href="./01-介绍.zip">点击就下载</a>
+<input id="btn" type="button" value="点击下载">
+<input id="but" type="file" value="点击上传图片">
+<script>
+    btn.onclick = function () {
+        var oA = document.createElement("a");
+        // 下载的文件名为1.html 一定要写上 不然就是打开文件了
+        oA.download = "1.html";
+        oA.href = "./01-介绍.html";
+        oA.click();
+    };
+    //  onchange 失去焦点时候触发 oninput 当表单内容发生变化时立即触发事件
+    // 上传图片事件
+    but.onchange = function (e) {
+        var file = new FileReader;
+        console.log(this.files[0]);
+        file.readAsDataURL(this.files[0]);
+        file.onload = function () {
+            var oImg = new Image();
+            oImg.src = this.result;
+            oImg.width = 200;
+            oImg.onload = function () {
+                document.body.appendChild(oImg);
+            }
+        }
+    }
+</script>
+</body>
+</html>

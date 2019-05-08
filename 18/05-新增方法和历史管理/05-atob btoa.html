@@ -16,9 +16,9 @@
         // 吧普通的字符串转换成 data base64 数据
         let str = "hello";
         // btoa b可以理解成编码
-        let str1 = window.btoa(str); // 编码
+        let str1 = btoa(str); // 编码
         console.log(str1); // 组成成分 0-9 a-z A-Z = + /
-        let str2 = window.atob(str1); // 解码
+        let str2 = atob(str1); // 解码
         console.log(str2);
 
         // 有中文不能够直接编码
@@ -28,7 +28,9 @@
         let str5 = window.btoa(str4);
         console.log(str5);
         // 解码 decodeURIComponent()
-        decodeURIComponent()
+        var str6 = atob(str5);
+        var str7 = decodeURIComponent(str6);
+        console.log(str7);
     </script>
 </body>
 </html>

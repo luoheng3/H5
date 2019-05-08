@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+          #box{
+               position: absolute;
+               top:-500px;
+               left:50px;
+               width: 100px;
+               height: 100px;
+               background-color: red;
+          }
+          #left{
+               position: absolute;
+               top:0;
+               left:0;
+               width: 200px;
+               height: 100px;
+               background-color: green;
+          }
+          #right{
+               position: absolute;
+               right:0;
+               top:0;
+               width: 100px;
+               height: 50px;
+               background-color: red;
+               color:white;
+          }
+    </style>
+</head>
+<body>
+     <div id="box"></div>
+     <div id="left"></div>
+     <div id="right" draggable="true"></div>
+     <script>
+          // 原生JS的拖拽
+          box.onmousedown = function (e) {
+               e = e || window.event;
+               let top = this.offsetTop;
+               let left = this.offsetLeft;
+               let x = e.clientX;
+               let y = e.clientY;
+               document.onmousemove = function (e) {
+                    e = e || window.event;
+                    box.style.left = e.clientX - x + left + "px";
+                    box.style.top = e.clientY - y + top + "px";
+               };
+               document.onmouseup = function () {
+                    this.onmousemove = this.onmouseup = null;
+               }
+          }
+          // \(^o^)/~ h5的拖拽
+          right.ondragstart = function () {
+               this.innerHTML = "注意了,开始拖拽了\(^o^)/~"
+          };
+          right.ondrag = function () {
+               this.innerHTML = "哈哈,\(^o^)/~,进行中"
+          };
+          right.ondragend = function () {
+               this.innerHTML = "终于结束了";
+          };
+          left.ondragenter = function () {
+               this.innerHTML = "进入了";
+          }
+          left.ondragover = function (e) {
+               e = e || window.event;
+               e.preventDefault();
+               e.stopPropagation();
+               this.innerHTML = "持续";
+          }
+          left.ondragleave = function () {
+               this.innerHTML = "结束";
+          };
+          left.ondrop = function (e) {
+               e = e || window.event;
+               e.preventDefault();
+               e.stopPropagation();
+               this.offsetParent.removeChild(this);
+          }
+     </script>
+</body>
+</html>

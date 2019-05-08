@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        li{
+            list-style: none;
+        }
+        #wrap{
+            display: flex;
+            width: 440px;
+            height: 300px;
+            background: rgba(17,27,37,.5);
+            margin:100px auto;
+            justify-content: space-around;
+            align-items: center;
+        }
+        #wrap ul li{
+            width: 100px;
+            height: 30px;
+            border:1px solid #f60;
+            text-align: center;
+            line-height: 30px;
+            color:#fff;
+            cursor:pointer;
+        }
+        #wrap ul li+li{
+            margin-top:4px;
+        }
+    </style>
+</head>
+    <body>
+        <div id="wrap">
+            <ul>
+                <li data-name="xiaomi"></li>
+                <li data-name="huawei"></li>
+                <li data-name="vivo"></li>
+            </ul>
+            <p id="p">这里放的是对手机产品的相关描述</p>
+        </div>
+        <script src="data.js"></script>
+        <script>
+            /*
+            *历史管理
+            *   既然是历史记录那我们就可以根据历史记录进行一些操作
+            *   根据历史所存的数据 进行渲染
+            *   display: flex;
+            *   justify-content:
+            *   align-items:
+            *   window.history.pushState()
+            *   主要用于移动端
+            */
+            var aLi = document.querySelectorAll("#wrap ul li");
+            aLi.forEach((item,index) =>{
+                item.innerHTML = item.dataset["name"];
+                item.onclick = function (e) {
+                    e = e || window.event;
+                    e.cancelBubble = true;
+                    e.preventDefault();
+                    e.stopPropagation();
+                    p.innerHTML = obj[item.dataset["name"]];
+                };
+                var a = decodeURI(obj[item.dataset["name"]]);
+                if(window.history && window.history.pushState){
+                    // 第一个参数 数据 第二个标题 没怎么实现 第三个 地址(可选)
+                    window.history.pushState(a,"罗恒","#abc="+item.dataset["name"]);
+                }
+            })
+            // 监听后退 前进按钮
+            window.onpopstate = function (e) {
+                e = e || window.event;
+                e.state && (p.innerHTML = e.state);
+            };
+            
+            window.onhashchange = function (e) {
+                console.log(window.location.hash);
+            };
+            document.onclick = function () {
+                window.history.back(); // 相当于浏览器的后退按钮
+                window.history.forward(); // 前进按钮
+                window.history.go();//   0 刷新  1 下一页 -1  上一页
+            }
+        </script>
+    </body>
+</html>

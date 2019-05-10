@@ -8,9 +8,20 @@
     </style>
 </head>
     <body>
-
         <script>
-
+            let aCtx = new AudioContext(); // web audio API；
+            let xhr = new XMLHttpRequest();
+            xhr.responseType = "arraybuffer";
+            xhr.open("post","./1.mp3",true);
+            xhr.send();
+            xhr.onload = function () {
+                aCtx.decodeAudioData(this.response,function (buffer) {
+                    let sourceNode = aCtx.createBufferSource();
+                    sourceNode.buffer = buffer;
+                    sourceNode.connect(aCtx.destination);
+                    sourceNode.start(0);
+                })
+            }
         </script>
     </body>
 </html>

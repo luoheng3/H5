@@ -15,6 +15,7 @@
 <!--
     1.txt 1.js 这些文件都是直接打开 不能下载
     想要用户下载 最好就是压缩一下就可以下载了
+    跨域问题前端一般都解决不了,都需要后台解决;
 -->
 <a href="./01-介绍.zip">点击就下载</a>
 <input id="btn" type="button" value="点击下载">
@@ -41,6 +42,19 @@
                 document.body.appendChild(oImg);
             }
         }
+    };
+    /*
+    * jsonp
+    *   本质就是创建script标签
+    */
+    function myData(data) {
+        console.log(data);
+    }
+    function createJsonp() {
+        let oS = document.createElement("script");
+        // callback后面就是返回函数的名字,自定义的;
+        oS.src = "http://www.baidu.com?callback=myData";
+        document.body.appendChild(oS);
     }
 </script>
 </body>

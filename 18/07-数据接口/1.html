@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    </style>
+</head>
+<body>
+<div id="box">
+
+</div>
+<script>
+    let xhr = new XMLHttpRequest();
+    xhr.open("get","localhost:8080/user",true);
+    xhr.send();
+    xhr.onload = function () {
+        if(this.readyState === 4 && this.status === 200){
+            box.innerHTML = this.responseText;
+        }
+    }
+</script>
+</body>
+</html>
